@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Trisha's Sweet Delights</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #F9F0FF, #FFD1DC);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #5C5470;
+        }
+        header {
+            background-color: #FFB6C1; /* Pastel Pink */
+            padding: 20px 0;
+            text-align: center;
+            color: #5C5470;
+        }
+        header h1 {
+            font-size: 2.5em;
+        }
+        .carousel-container {
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .product {
+            background-color: #E8D9F5; /* Light pastel lavender */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .product h3 {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+        .product p {
+            font-size: 0.9em;
+            color: #7D6E83;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .prev, .next {
+            background-color: #FFB6C1;
+            color: #5C5470;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .prev:hover, .next:hover {
+            background-color: #FADCD9;
+        }
+        footer {
+            margin-top: 30px;
+            background-color: #FFB6C1; /* Pastel Pink */
+            padding: 10px 0;
+            text-align: center;
+            color: #5C5470;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Indulge in Our Delicious Creations</h1>
+    </header>
+
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="product">
+                <img src="images/IMG_4247.jpeg" alt="Dutch Truffle Cupcake">
+                <h3>DUTCH TRUFFLE CUPCAKE</h3>
+                <p>A moist, velvety chocolate base is topped with a luxurious truffle filling, creating the perfect balance of sweetness and depth.</p>
+            </div>
+            <div class="product">
+                <img src="images/IMG_5071.jpeg" alt="Choco Chip Cake">
+                <h3>Choco Chip Cake</h3>
+                <p>Indulge in the perfect combination of soft, fluffy chocolate cake studded with rich, melt-in-your-mouth choco chips.</p>
+            </div>
+            <div class="product">
+                <img src="images/IMG_4191_Original.jpeg" alt="Rasmalai Cupcakes">
+                <h3>Rasmalai Cupcakes</h3>
+                <p>Soft, spongy cupcakes infused with saffron, cardamom, and rosewater, mimicking the classic rasmalai.</p>
+            </div>
+            <div class="product">
+                <img src="images/IMG_5557.png" alt="Chocolate Truffle Cake">
+                <h3>Chocolate Truffle Cake</h3>
+                <p>Rich and decadent, with a smooth, creamy truffle filling that melts in your mouth, creating a luxurious texture.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="prev" onclick="moveCarousel(-1)">&#8592;</button>
+        <button class="next" onclick="moveCarousel(1)">&#8594;</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sweet Delights Bakery | Crafted with love</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function moveCarousel(direction) {
+            const carousel = document.getElementById('carousel');
+            const products = document.querySelectorAll('.product');
+            currentIndex += direction;
+
+            if (currentIndex < 0) currentIndex = products.length - 1;
+            if (currentIndex >= products.length) currentIndex = 0;
+
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>
